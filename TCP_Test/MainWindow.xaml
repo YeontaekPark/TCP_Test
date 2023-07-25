@@ -6,20 +6,22 @@
         xmlns:local="clr-namespace:TCP_Test"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="550"/>
-        </Grid.RowDefinitions>
+    <Border BorderBrush="DarkGray" BorderThickness="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Content="Client" FontSize="30"/>
-        <Label Grid.Column="1" Grid.Row="0" Content="Server" FontSize="30"/>
+            <Label Grid.Column="0" Grid.Row="0" Content="Client" FontSize="30"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="Server" FontSize="30"/>
 
-        <local:Client Loaded="Client_Loaded" Grid.Column="0" Grid.Row="1"/>
-        <local:Server Loaded="Server_Loaded" Grid.Column="1" Grid.Row="1"/>
-    </Grid>
+            <local:Client Loaded="Client_Loaded" Grid.Column="0" Grid.Row="1"/>
+            <local:Server Loaded="Server_Loaded" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+    </Border>
 </Window>

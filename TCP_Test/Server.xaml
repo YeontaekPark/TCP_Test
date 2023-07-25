@@ -18,6 +18,18 @@
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
+
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="TextBoxSytle" TargetType="TextBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
     </UserControl.Resources>
 
     <!-- Server -->
@@ -30,8 +42,8 @@
         <Grid Grid.Row="0" Background="LightCoral">
             <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Port : " Margin="3"/>
-                    <TextBlock Text="현재 Port" Margin="3"/>
+                    <TextBlock Text="Port : " Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Text="Port Number" Style="{StaticResource TextBoxSytle}"/>
                 </StackPanel>
 
                 <Button Content="Start" Style="{StaticResource ButtonStyle}"/>
@@ -40,7 +52,10 @@
         </Grid>
 
         <Grid Grid.Row="1" Background="LightYellow">
-           
+            <StackPanel>
+                <Label Content="RX" FontSize="20" Background="AliceBlue"/>
+                <ListView Background="Transparent"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
