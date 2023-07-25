@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="TCP_Test.Client"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TCP_Test"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="TextBoxSytle" TargetType="TextBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- Client -->
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightCyan">
+            <StackPanel HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text=" IP : " Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Text="Input IP Address" x:Name="IPInput" Style="{StaticResource TextBoxSytle}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text=" Port : " Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Text="Input Port Number" x:Name="PortInput" Style="{StaticResource TextBoxSytle}"/>
+                </StackPanel>
+
+                <Button x:Name="ConnectButton" Content="1. Connect" Style="{StaticResource ButtonStyle}"/>
+                <Button x:Name="DisconnectButton" Content="2. Disconnect" Style="{StaticResource ButtonStyle}"/>
+                <Button x:Name="SendButton" Content="3. Send" Style="{StaticResource ButtonStyle}"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text=" 길이 : " Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Text="길이를 입력" x:Name="LengthInput" Style="{StaticResource TextBoxSytle}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text=" 횟수 : " Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Text="횟수를 입력" x:Name="CountInput" Style="{StaticResource TextBoxSytle}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="SkyBlue">
+            <StackPanel>
+                <Label Content="RX" FontSize="20" Background="AliceBlue"/>
+                <ListView Background="Transparent"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
