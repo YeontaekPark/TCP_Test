@@ -9,16 +9,16 @@
     <Border BorderBrush="DarkGray" BorderThickness="5">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
 
-            <Label Grid.Column="0" Grid.Row="0" Content="Client" FontSize="30"/>
-            <Label Grid.Column="1" Grid.Row="0" Content="Server" FontSize="30"/>
+            <!--<Label Grid.Column="0" Grid.Row="0" Content="Client" FontSize="30"/>
+            <Label Grid.Column="1" Grid.Row="0" Content="Server" FontSize="30"/>-->
 
             <!-- Client -->
             <TabControl Grid.Column="0" Grid.Row="1">
@@ -39,9 +39,17 @@
                     <local:Client Loaded="Client_Loaded" Grid.Column="0" Grid.Row="1"/>
                 </TabItem>
             </TabControl>
-
-            <!-- Server -->
-            <local:Server Loaded="Server_Loaded" Grid.Column="1" Grid.Row="1"/>
+            <TabControl Grid.Column="1" Grid.Row="0">
+                <TabItem>
+                    <TabItem.Header>
+                        <!-- Client 1 Header -->
+                        <TextBlock Text="Server"/>
+                    </TabItem.Header>
+                    <!-- Content -->
+                    <local:Server Loaded="Server_Loaded" Grid.Column="1" Grid.Row="1"/>
+                </TabItem>
+                <!-- Server -->
+            </TabControl>
         </Grid>
     </Border>
 </Window>

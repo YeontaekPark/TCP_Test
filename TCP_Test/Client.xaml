@@ -7,24 +7,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="400">
     <UserControl.Resources>
+        <!-- Button 속성-->
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="Margin" Value="5"/>
-        </Style>
+            <Setter Property="Background" Value="#ff4b4b"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10,0,30,0"/>
 
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="3"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- 고정 글씨-->
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-            <Setter Property="Width" Value="40"/>
+            <Setter Property="Width" Value="50"/>
             <Setter Property="Height" Value="20"/>
-            <Setter Property="Margin" Value="2"/>
         </Style>
 
+        <!-- 입력 Box -->
         <Style x:Key="TextBoxSytle" TargetType="TextBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Margin" Value="2"/>
+            <!--<Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>-->
+            <!--<Setter Property="Margin" Value="2"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+
+        <!-- 입력 Box 테두리-->
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
+
 
     <!-- Client -->
     <Grid Background="White">
@@ -33,31 +69,68 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="LightCyan">
-            <StackPanel HorizontalAlignment="Left">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text=" IP : " Style="{StaticResource TextBlockStyle}"/>
-                    <TextBox Text="Input IP Address" x:Name="IPInput" Style="{StaticResource TextBoxSytle}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text=" Port : " Style="{StaticResource TextBlockStyle}"/>
-                    <TextBox Text="Input Port Number" x:Name="PortInput" Style="{StaticResource TextBoxSytle}"/>
-                </StackPanel>
+        <Grid Grid.Row="0" Background="White">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>-->
 
-                <Button x:Name="ConnectButton" Content="1. Connect" Style="{StaticResource ButtonStyle}"/>
-                <Button x:Name="DisconnectButton" Content="2. Disconnect" Style="{StaticResource ButtonStyle}"/>
-                <Button x:Name="SendButton" Content="3. Send" Style="{StaticResource ButtonStyle}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text=" 길이 : " Style="{StaticResource TextBlockStyle}"/>
-                    <TextBox Text="길이를 입력" x:Name="LengthInput" Style="{StaticResource TextBoxSytle}"/>
-                </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button x:Name="ConnectButton" Content="Connect" Style="{StaticResource ButtonStyle}"/>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text=" 횟수 : " Style="{StaticResource TextBlockStyle}"/>
-                    <TextBox Text="횟수를 입력" x:Name="CountInput" Style="{StaticResource TextBoxSytle}"/>
+                <!-- IP, Port-->
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="IP :" Style="{StaticResource TextBlockStyle}"/>
+                        <Border Style="{StaticResource BorderStyle}">
+                            <TextBox Text="Input IP Address" x:Name="IPInput" Style="{StaticResource TextBoxSytle}"/>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Port :" Style="{StaticResource TextBlockStyle}"/>
+                        <Border Style="{StaticResource BorderStyle}">
+                            <TextBox Text="Input Port Number" x:Name="PortInput" Style="{StaticResource TextBoxSytle}"/>
+                        </Border>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button x:Name="SendButton" Content="Send" Grid.Column="0" Grid.Row="1" Style="{StaticResource ButtonStyle}"/>
+
+                <!-- Length, Count -->
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal"  Margin="0,0,0,5">
+                        <TextBlock Text="Length : " Style="{StaticResource TextBlockStyle}"/>
+                        <Border Style="{StaticResource BorderStyle}">
+                            <TextBox Text="Input Length" x:Name="LengthInput" Style="{StaticResource TextBoxSytle}"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Count :" Style="{StaticResource TextBlockStyle}"/>
+                        <Border Style="{StaticResource BorderStyle}">
+                            <TextBox Text="Input Count" x:Name="CountInput" Style="{StaticResource TextBoxSytle}"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button x:Name="DisconnectButton" Content="Disconnect" Style="{StaticResource ButtonStyle}"/>
+            </StackPanel>
+            
+           
+
+            
+
+            
         </Grid>
 
         <Grid Grid.Row="1" Background="SkyBlue">

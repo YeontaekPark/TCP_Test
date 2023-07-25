@@ -14,9 +14,27 @@
         </Style>
 
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#ff4b4b"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10,0,30,0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="3"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
@@ -25,10 +43,26 @@
             <Setter Property="Margin" Value="2"/>
         </Style>
 
+        <!-- 입력 Box -->
         <Style x:Key="TextBoxSytle" TargetType="TextBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Margin" Value="2"/>
+            <!--<Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>-->
+            <!--<Setter Property="Margin" Value="2"/>-->
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+
+        <!-- 입력 Box 테두리-->
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
 
@@ -38,16 +72,31 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Row="0" Background="LightCoral">
-            <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+
+        <Grid Grid.Row="0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <!-- Start 버튼 -->
+                <Button Content="Start" Style="{StaticResource ButtonStyle}"/>
+
+                <!-- Port -->
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Port : " Style="{StaticResource TextBlockStyle}"/>
-                    <TextBox Text="Port Number" Style="{StaticResource TextBoxSytle}"/>
-                </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}">
+                        <TextBox Text="Port Number" Style="{StaticResource TextBoxSytle}"/>
+                    </Border>
 
-                <Button Content="Start" Style="{StaticResource ButtonStyle}"/>
-                <Button Content="Stop" Style="{StaticResource ButtonStyle}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <!-- Stop 버튼 -->
+                <Button Grid.Row="1" Content="Stop" Style="{StaticResource ButtonStyle}"/>
             </StackPanel>
         </Grid>
 
