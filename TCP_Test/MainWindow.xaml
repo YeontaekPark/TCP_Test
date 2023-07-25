@@ -11,6 +11,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -22,6 +23,33 @@
 
             <local:Client Loaded="Client_Loaded" Grid.Column="0" Grid.Row="1"/>
             <local:Server Loaded="Server_Loaded" Grid.Column="1" Grid.Row="1"/>
+
+            <TabControl Grid.Column="2" Grid.Row="1">
+                <TabItem>
+                    <TabItem.Header>
+                        <!-- Tab 1 Header -->
+                        <TextBlock Text="Tab 1"/>
+                    </TabItem.Header>
+                    <!-- Tab 1 Content -->
+                    <Label Grid.Column="0" Grid.Row="0" Content="Client" FontSize="30"/>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <!-- Tab 2 Header -->
+                        <TextBlock Text="Tab 2"/>
+                    </TabItem.Header>
+                    <!-- Tab 2 Content -->
+                    <TextBlock Text="This is Tab 2 content."/>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <!-- Tab 3 Header -->
+                        <TextBlock Text="Tab 3"/>
+                    </TabItem.Header>
+                    <!-- Tab 3 Content -->
+                    <TextBlock Text="This is Tab 3 content."/>
+                </TabItem>
+            </TabControl>
         </Grid>
     </Border>
 </Window>
